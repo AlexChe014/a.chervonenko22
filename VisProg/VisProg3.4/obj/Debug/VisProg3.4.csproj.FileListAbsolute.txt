@@ -1,0 +1,9 @@
+C:\Users\alexc\source\repos\VisProg\VisProg3.4\bin\Debug\VisProg3.4.exe.config
+C:\Users\alexc\source\repos\VisProg\VisProg3.4\bin\Debug\VisProg3.4.exe
+C:\Users\alexc\source\repos\VisProg\VisProg3.4\bin\Debug\VisProg3.4.pdb
+C:\Users\alexc\source\repos\VisProg\VisProg3.4\obj\Debug\VisProg3.4.csprojAssemblyReference.cache
+C:\Users\alexc\source\repos\VisProg\VisProg3.4\obj\Debug\VisProg3._4.Form1.resources
+C:\Users\alexc\source\repos\VisProg\VisProg3.4\obj\Debug\VisProg3._4.Properties.Resources.resources
+C:\Users\alexc\source\repos\VisProg\VisProg3.4\obj\Debug\VisProg3.4.csproj.GenerateResource.cache
+C:\Users\alexc\source\repos\VisProg\VisProg3.4\obj\Debug\VisProg3.4.exe
+C:\Users\alexc\source\repos\VisProg\VisProg3.4\obj\Debug\VisProg3.4.pdb

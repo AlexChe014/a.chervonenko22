@@ -1,0 +1,9 @@
+C:\Users\alexc\source\repos\VisProg\VisProg2\bin\Debug\VisProg2.exe.config
+C:\Users\alexc\source\repos\VisProg\VisProg2\bin\Debug\VisProg2.exe
+C:\Users\alexc\source\repos\VisProg\VisProg2\bin\Debug\VisProg2.pdb
+C:\Users\alexc\source\repos\VisProg\VisProg2\obj\Debug\VisProg2.Form1.resources
+C:\Users\alexc\source\repos\VisProg\VisProg2\obj\Debug\VisProg2.Properties.Resources.resources
+C:\Users\alexc\source\repos\VisProg\VisProg2\obj\Debug\VisProg1.2.csproj.GenerateResource.Cache
+C:\Users\alexc\source\repos\VisProg\VisProg2\obj\Debug\VisProg1.2.csproj.CoreCompileInputs.cache
+C:\Users\alexc\source\repos\VisProg\VisProg2\obj\Debug\VisProg2.exe
+C:\Users\alexc\source\repos\VisProg\VisProg2\obj\Debug\VisProg2.pdb
