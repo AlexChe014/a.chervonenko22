@@ -62,6 +62,7 @@ namespace VisProgWork
         {
             f3.Show();
             this.Hide();
+            timer1.Enabled = false;
         }
     }
 }
