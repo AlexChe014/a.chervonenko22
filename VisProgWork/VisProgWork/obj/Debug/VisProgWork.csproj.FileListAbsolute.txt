@@ -1,0 +1,11 @@
+C:\Users\alexc\OneDrive\Рабочий стол\Пары\a.chervonenko22\VisProgWork\VisProgWork\bin\Debug\VisProgWork.exe.config
+C:\Users\alexc\OneDrive\Рабочий стол\Пары\a.chervonenko22\VisProgWork\VisProgWork\bin\Debug\VisProgWork.exe
+C:\Users\alexc\OneDrive\Рабочий стол\Пары\a.chervonenko22\VisProgWork\VisProgWork\bin\Debug\VisProgWork.pdb
+C:\Users\alexc\OneDrive\Рабочий стол\Пары\a.chervonenko22\VisProgWork\VisProgWork\obj\Debug\VisProgWork.Form1.resources
+C:\Users\alexc\OneDrive\Рабочий стол\Пары\a.chervonenko22\VisProgWork\VisProgWork\obj\Debug\VisProgWork.Properties.Resources.resources
+C:\Users\alexc\OneDrive\Рабочий стол\Пары\a.chervonenko22\VisProgWork\VisProgWork\obj\Debug\VisProgWork.csproj.GenerateResource.cache
+C:\Users\alexc\OneDrive\Рабочий стол\Пары\a.chervonenko22\VisProgWork\VisProgWork\obj\Debug\VisProgWork.exe
+C:\Users\alexc\OneDrive\Рабочий стол\Пары\a.chervonenko22\VisProgWork\VisProgWork\obj\Debug\VisProgWork.pdb
+C:\Users\alexc\OneDrive\Рабочий стол\Пары\a.chervonenko22\VisProgWork\VisProgWork\obj\Debug\VisProgWork.Form2.resources
+C:\Users\alexc\OneDrive\Рабочий стол\Пары\a.chervonenko22\VisProgWork\VisProgWork\obj\Debug\VisProgWork.Form3.resources
+C:\Users\alexc\OneDrive\Рабочий стол\Пары\a.chervonenko22\VisProgWork\VisProgWork\obj\Debug\VisProgWork.csprojAssemblyReference.cache
