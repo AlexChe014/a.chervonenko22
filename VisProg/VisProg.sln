@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27130.2036
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29806.167
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VisProg1.1", "VisProg\VisProg1.1.csproj", "{4EBFF2BC-1767-4633-B8B0-EE082017F85A}"
 EndProject
@@ -31,7 +31,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VisProg5.1", "VisProg5.1\Vi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VisProg5.2", "VisProg5.2\VisProg5.2.csproj", "{E91E6FB6-1809-4E5B-9285-0BB3B6FD7B61}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VisProg6", "VisProg6\VisProg6.csproj", "{705C823C-3EA0-4B92-89BC-5C731A5E5620}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VisProg6", "VisProg6\VisProg6.csproj", "{CF67D359-7D6F-4F76-84B6-25D8E928A232}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VisProgEF", "VisProgEF\VisProgEF.csproj", "{C5DF28F8-BBE0-4AB2-A7FF-78C93A361898}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -95,10 +97,14 @@ Global
 		{E91E6FB6-1809-4E5B-9285-0BB3B6FD7B61}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E91E6FB6-1809-4E5B-9285-0BB3B6FD7B61}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E91E6FB6-1809-4E5B-9285-0BB3B6FD7B61}.Release|Any CPU.Build.0 = Release|Any CPU
-		{705C823C-3EA0-4B92-89BC-5C731A5E5620}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{705C823C-3EA0-4B92-89BC-5C731A5E5620}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{705C823C-3EA0-4B92-89BC-5C731A5E5620}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{705C823C-3EA0-4B92-89BC-5C731A5E5620}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF67D359-7D6F-4F76-84B6-25D8E928A232}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF67D359-7D6F-4F76-84B6-25D8E928A232}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF67D359-7D6F-4F76-84B6-25D8E928A232}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF67D359-7D6F-4F76-84B6-25D8E928A232}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C5DF28F8-BBE0-4AB2-A7FF-78C93A361898}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5DF28F8-BBE0-4AB2-A7FF-78C93A361898}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5DF28F8-BBE0-4AB2-A7FF-78C93A361898}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5DF28F8-BBE0-4AB2-A7FF-78C93A361898}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
