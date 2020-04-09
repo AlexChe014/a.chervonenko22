@@ -64,3 +64,4 @@ C:\Users\alexc\OneDrive\Рабочий стол\Пары\a.chervonenko22\VisProg
 C:\Users\alexc\OneDrive\Рабочий стол\Пары\a.chervonenko22\VisProg\VisProg5.1\bin\Debug\Microsoft.Extensions.Primitives.xml
 C:\Users\alexc\OneDrive\Рабочий стол\Пары\a.chervonenko22\VisProg\VisProg5.1\bin\Debug\System.Collections.Immutable.xml
 C:\Users\alexc\OneDrive\Рабочий стол\Пары\a.chervonenko22\VisProg\VisProg5.1\bin\Debug\System.Diagnostics.DiagnosticSource.xml
+C:\Users\alexc\OneDrive\Рабочий стол\Пары\a.chervonenko22\VisProg\VisProg5.1\obj\Debug\VisProg5.1.csproj.CoreCompileInputs.cache

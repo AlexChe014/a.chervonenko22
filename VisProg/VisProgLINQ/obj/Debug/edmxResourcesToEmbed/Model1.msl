@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище demoModelContainer" CdmEntityContainer="demoEntities">
+    <EntitySetMapping Name="groups">
+      <EntityTypeMapping TypeName="demoModel.groups">
+        <MappingFragment StoreEntitySet="groups">
+          <ScalarProperty Name="code_group" ColumnName="code_group" />
+          <ScalarProperty Name="name_group" ColumnName="name_group" />
+          <ScalarProperty Name="num_course" ColumnName="num_course" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="lectors">
+      <EntityTypeMapping TypeName="demoModel.lectors">
+        <MappingFragment StoreEntitySet="lectors">
+          <ScalarProperty Name="code_lector" ColumnName="code_lector" />
+          <ScalarProperty Name="name_lector" ColumnName="name_lector" />
+          <ScalarProperty Name="post" ColumnName="post" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="students">
+      <EntityTypeMapping TypeName="demoModel.students">
+        <MappingFragment StoreEntitySet="students">
+          <ScalarProperty Name="code_stud" ColumnName="code_stud" />
+          <ScalarProperty Name="surname" ColumnName="surname" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="code_group" ColumnName="code_group" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="subjects">
+      <EntityTypeMapping TypeName="demoModel.subjects">
+        <MappingFragment StoreEntitySet="subjects">
+          <ScalarProperty Name="code_subject" ColumnName="code_subject" />
+          <ScalarProperty Name="name_subject" ColumnName="name_subject" />
+          <ScalarProperty Name="count_hours" ColumnName="count_hours" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="progress">
+      <EntityTypeMapping TypeName="demoModel.progress">
+        <MappingFragment StoreEntitySet="progress">
+          <ScalarProperty Name="code_stud" ColumnName="code_stud" />
+          <ScalarProperty Name="code_subject" ColumnName="code_subject" />
+          <ScalarProperty Name="code_lector" ColumnName="code_lector" />
+          <ScalarProperty Name="date_exam" ColumnName="date_exam" />
+          <ScalarProperty Name="estimate" ColumnName="estimate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

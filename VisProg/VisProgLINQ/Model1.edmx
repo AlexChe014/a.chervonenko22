@@ -1,0 +1,336 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище demoModel" Provider="Npgsql" ProviderManifestToken="11.5" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="groups">
+          <Key>
+            <PropertyRef Name="code_group" />
+          </Key>
+          <Property Name="code_group" Type="int4" Nullable="false" />
+          <Property Name="name_group" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="num_course" Type="int4" />
+        </EntityType>
+        <EntityType Name="lectors">
+          <Key>
+            <PropertyRef Name="code_lector" />
+          </Key>
+          <Property Name="code_lector" Type="int4" Nullable="false" />
+          <Property Name="name_lector" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="post" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "demo.public.progress" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="progress">
+          <Key>
+            <PropertyRef Name="code_stud" />
+            <PropertyRef Name="code_subject" />
+            <PropertyRef Name="code_lector" />
+            <PropertyRef Name="date_exam" />
+          </Key>
+          <Property Name="code_stud" Type="int4" Nullable="false" />
+          <Property Name="code_subject" Type="int4" Nullable="false" />
+          <Property Name="code_lector" Type="int4" Nullable="false" />
+          <Property Name="date_exam" Type="date" Nullable="false" />
+          <Property Name="estimate" Type="int4" />
+        </EntityType>
+        <EntityType Name="students">
+          <Key>
+            <PropertyRef Name="code_stud" />
+          </Key>
+          <Property Name="code_stud" Type="int4" Nullable="false" />
+          <Property Name="surname" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="code_group" Type="int4" />
+        </EntityType>
+        <EntityType Name="subjects">
+          <Key>
+            <PropertyRef Name="code_subject" />
+          </Key>
+          <Property Name="code_subject" Type="int4" Nullable="false" />
+          <Property Name="name_subject" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="count_hours" Type="int4" />
+        </EntityType>
+        <Association Name="progress_code_lector_fkey">
+          <End Role="lectors" Type="Self.lectors" Multiplicity="1" />
+          <End Role="progress" Type="Self.progress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="lectors">
+              <PropertyRef Name="code_lector" />
+            </Principal>
+            <Dependent Role="progress">
+              <PropertyRef Name="code_lector" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="progress_code_stud_fkey">
+          <End Role="students" Type="Self.students" Multiplicity="1" />
+          <End Role="progress" Type="Self.progress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="students">
+              <PropertyRef Name="code_stud" />
+            </Principal>
+            <Dependent Role="progress">
+              <PropertyRef Name="code_stud" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="progress_code_subject_fkey">
+          <End Role="subjects" Type="Self.subjects" Multiplicity="1" />
+          <End Role="progress" Type="Self.progress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="subjects">
+              <PropertyRef Name="code_subject" />
+            </Principal>
+            <Dependent Role="progress">
+              <PropertyRef Name="code_subject" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="students_code_group_fkey">
+          <End Role="groups" Type="Self.groups" Multiplicity="0..1" />
+          <End Role="students" Type="Self.students" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="groups">
+              <PropertyRef Name="code_group" />
+            </Principal>
+            <Dependent Role="students">
+              <PropertyRef Name="code_group" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище demoModelContainer">
+          <EntitySet Name="groups" EntityType="Self.groups" Schema="public" store:Type="Tables" />
+          <EntitySet Name="lectors" EntityType="Self.lectors" Schema="public" store:Type="Tables" />
+          <EntitySet Name="students" EntityType="Self.students" Schema="public" store:Type="Tables" />
+          <EntitySet Name="subjects" EntityType="Self.subjects" Schema="public" store:Type="Tables" />
+          <EntitySet Name="progress" EntityType="Self.progress" store:Type="Tables" store:Schema="public">
+            <DefiningQuery>SELECT "progress"."code_stud", "progress"."code_subject", "progress"."code_lector", "progress"."date_exam", "progress"."estimate" FROM "public"."progress" AS "progress"</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="progress_code_lector_fkey" Association="Self.progress_code_lector_fkey">
+            <End Role="lectors" EntitySet="lectors" />
+            <End Role="progress" EntitySet="progress" />
+          </AssociationSet>
+          <AssociationSet Name="progress_code_stud_fkey" Association="Self.progress_code_stud_fkey">
+            <End Role="students" EntitySet="students" />
+            <End Role="progress" EntitySet="progress" />
+          </AssociationSet>
+          <AssociationSet Name="progress_code_subject_fkey" Association="Self.progress_code_subject_fkey">
+            <End Role="subjects" EntitySet="subjects" />
+            <End Role="progress" EntitySet="progress" />
+          </AssociationSet>
+          <AssociationSet Name="students_code_group_fkey" Association="Self.students_code_group_fkey">
+            <End Role="groups" EntitySet="groups" />
+            <End Role="students" EntitySet="students" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="demoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="groups">
+          <Key>
+            <PropertyRef Name="code_group" />
+          </Key>
+          <Property Name="code_group" Type="Int32" Nullable="false" />
+          <Property Name="name_group" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="num_course" Type="Int32" />
+          <NavigationProperty Name="students" Relationship="Self.students_code_group_fkey" FromRole="groups" ToRole="students" />
+        </EntityType>
+        <EntityType Name="lectors">
+          <Key>
+            <PropertyRef Name="code_lector" />
+          </Key>
+          <Property Name="code_lector" Type="Int32" Nullable="false" />
+          <Property Name="name_lector" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="post" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="progress" Relationship="Self.progress_code_lector_fkey" FromRole="lectors" ToRole="progress" />
+        </EntityType>
+        <EntityType Name="students">
+          <Key>
+            <PropertyRef Name="code_stud" />
+          </Key>
+          <Property Name="code_stud" Type="Int32" Nullable="false" />
+          <Property Name="surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="code_group" Type="Int32" />
+          <NavigationProperty Name="groups" Relationship="Self.students_code_group_fkey" FromRole="students" ToRole="groups" />
+          <NavigationProperty Name="progress" Relationship="Self.progress_code_stud_fkey" FromRole="students" ToRole="progress" />
+        </EntityType>
+        <EntityType Name="subjects">
+          <Key>
+            <PropertyRef Name="code_subject" />
+          </Key>
+          <Property Name="code_subject" Type="Int32" Nullable="false" />
+          <Property Name="name_subject" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="count_hours" Type="Int32" />
+          <NavigationProperty Name="progress" Relationship="Self.progress_code_subject_fkey" FromRole="subjects" ToRole="progress" />
+        </EntityType>
+        <EntityType Name="progress">
+          <Key>
+            <PropertyRef Name="code_stud" />
+            <PropertyRef Name="code_subject" />
+            <PropertyRef Name="code_lector" />
+            <PropertyRef Name="date_exam" />
+          </Key>
+          <Property Name="code_stud" Type="Int32" Nullable="false" />
+          <Property Name="code_subject" Type="Int32" Nullable="false" />
+          <Property Name="code_lector" Type="Int32" Nullable="false" />
+          <Property Name="date_exam" Type="DateTime" Precision="0" Nullable="false" />
+          <Property Name="estimate" Type="Int32" />
+          <NavigationProperty Name="lectors" Relationship="Self.progress_code_lector_fkey" FromRole="progress" ToRole="lectors" />
+          <NavigationProperty Name="students" Relationship="Self.progress_code_stud_fkey" FromRole="progress" ToRole="students" />
+          <NavigationProperty Name="subjects" Relationship="Self.progress_code_subject_fkey" FromRole="progress" ToRole="subjects" />
+        </EntityType>
+        <Association Name="students_code_group_fkey">
+          <End Role="groups" Type="Self.groups" Multiplicity="0..1" />
+          <End Role="students" Type="Self.students" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="groups">
+              <PropertyRef Name="code_group" />
+            </Principal>
+            <Dependent Role="students">
+              <PropertyRef Name="code_group" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="progress_code_lector_fkey">
+          <End Role="lectors" Type="Self.lectors" Multiplicity="1" />
+          <End Role="progress" Type="Self.progress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="lectors">
+              <PropertyRef Name="code_lector" />
+            </Principal>
+            <Dependent Role="progress">
+              <PropertyRef Name="code_lector" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="progress_code_stud_fkey">
+          <End Role="students" Type="Self.students" Multiplicity="1" />
+          <End Role="progress" Type="Self.progress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="students">
+              <PropertyRef Name="code_stud" />
+            </Principal>
+            <Dependent Role="progress">
+              <PropertyRef Name="code_stud" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="progress_code_subject_fkey">
+          <End Role="subjects" Type="Self.subjects" Multiplicity="1" />
+          <End Role="progress" Type="Self.progress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="subjects">
+              <PropertyRef Name="code_subject" />
+            </Principal>
+            <Dependent Role="progress">
+              <PropertyRef Name="code_subject" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="demoEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="groups" EntityType="Self.groups" />
+          <EntitySet Name="lectors" EntityType="Self.lectors" />
+          <EntitySet Name="students" EntityType="Self.students" />
+          <EntitySet Name="subjects" EntityType="Self.subjects" />
+          <EntitySet Name="progress" EntityType="Self.progress" />
+          <AssociationSet Name="students_code_group_fkey" Association="Self.students_code_group_fkey">
+            <End Role="groups" EntitySet="groups" />
+            <End Role="students" EntitySet="students" />
+          </AssociationSet>
+          <AssociationSet Name="progress_code_lector_fkey" Association="Self.progress_code_lector_fkey">
+            <End Role="lectors" EntitySet="lectors" />
+            <End Role="progress" EntitySet="progress" />
+          </AssociationSet>
+          <AssociationSet Name="progress_code_stud_fkey" Association="Self.progress_code_stud_fkey">
+            <End Role="students" EntitySet="students" />
+            <End Role="progress" EntitySet="progress" />
+          </AssociationSet>
+          <AssociationSet Name="progress_code_subject_fkey" Association="Self.progress_code_subject_fkey">
+            <End Role="subjects" EntitySet="subjects" />
+            <End Role="progress" EntitySet="progress" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище demoModelContainer" CdmEntityContainer="demoEntities">
+          <EntitySetMapping Name="groups">
+            <EntityTypeMapping TypeName="demoModel.groups">
+              <MappingFragment StoreEntitySet="groups">
+                <ScalarProperty Name="code_group" ColumnName="code_group" />
+                <ScalarProperty Name="name_group" ColumnName="name_group" />
+                <ScalarProperty Name="num_course" ColumnName="num_course" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="lectors">
+            <EntityTypeMapping TypeName="demoModel.lectors">
+              <MappingFragment StoreEntitySet="lectors">
+                <ScalarProperty Name="code_lector" ColumnName="code_lector" />
+                <ScalarProperty Name="name_lector" ColumnName="name_lector" />
+                <ScalarProperty Name="post" ColumnName="post" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="students">
+            <EntityTypeMapping TypeName="demoModel.students">
+              <MappingFragment StoreEntitySet="students">
+                <ScalarProperty Name="code_stud" ColumnName="code_stud" />
+                <ScalarProperty Name="surname" ColumnName="surname" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="code_group" ColumnName="code_group" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="subjects">
+            <EntityTypeMapping TypeName="demoModel.subjects">
+              <MappingFragment StoreEntitySet="subjects">
+                <ScalarProperty Name="code_subject" ColumnName="code_subject" />
+                <ScalarProperty Name="name_subject" ColumnName="name_subject" />
+                <ScalarProperty Name="count_hours" ColumnName="count_hours" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="progress">
+            <EntityTypeMapping TypeName="demoModel.progress">
+              <MappingFragment StoreEntitySet="progress">
+                <ScalarProperty Name="code_stud" ColumnName="code_stud" />
+                <ScalarProperty Name="code_subject" ColumnName="code_subject" />
+                <ScalarProperty Name="code_lector" ColumnName="code_lector" />
+                <ScalarProperty Name="date_exam" ColumnName="date_exam" />
+                <ScalarProperty Name="estimate" ColumnName="estimate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

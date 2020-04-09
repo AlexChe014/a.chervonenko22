@@ -8,3 +8,14 @@ C:\Users\alexc\source\repos\VisProg\VisProg6\obj\Debug\VisProg6.csproj.GenerateR
 C:\Users\alexc\source\repos\VisProg\VisProg6\obj\Debug\VisProg6.exe
 C:\Users\alexc\source\repos\VisProg\VisProg6\obj\Debug\VisProg6.pdb
 C:\Users\alexc\source\repos\VisProg\VisProg6\obj\Debug\VisProg6.Form2.resources
+C:\Users\alexc\OneDrive\Рабочий стол\Пары\a.chervonenko22\VisProg\VisProg6\bin\Debug\VisProg6.exe.config
+C:\Users\alexc\OneDrive\Рабочий стол\Пары\a.chervonenko22\VisProg\VisProg6\bin\Debug\VisProg6.exe
+C:\Users\alexc\OneDrive\Рабочий стол\Пары\a.chervonenko22\VisProg\VisProg6\bin\Debug\VisProg6.pdb
+C:\Users\alexc\OneDrive\Рабочий стол\Пары\a.chervonenko22\VisProg\VisProg6\obj\Debug\VisProg6.csprojAssemblyReference.cache
+C:\Users\alexc\OneDrive\Рабочий стол\Пары\a.chervonenko22\VisProg\VisProg6\obj\Debug\VisProg6.Form1.resources
+C:\Users\alexc\OneDrive\Рабочий стол\Пары\a.chervonenko22\VisProg\VisProg6\obj\Debug\VisProg6.Form2.resources
+C:\Users\alexc\OneDrive\Рабочий стол\Пары\a.chervonenko22\VisProg\VisProg6\obj\Debug\VisProg6.Properties.Resources.resources
+C:\Users\alexc\OneDrive\Рабочий стол\Пары\a.chervonenko22\VisProg\VisProg6\obj\Debug\VisProg6.csproj.GenerateResource.cache
+C:\Users\alexc\OneDrive\Рабочий стол\Пары\a.chervonenko22\VisProg\VisProg6\obj\Debug\VisProg6.csproj.CoreCompileInputs.cache
+C:\Users\alexc\OneDrive\Рабочий стол\Пары\a.chervonenko22\VisProg\VisProg6\obj\Debug\VisProg6.exe
+C:\Users\alexc\OneDrive\Рабочий стол\Пары\a.chervonenko22\VisProg\VisProg6\obj\Debug\VisProg6.pdb
