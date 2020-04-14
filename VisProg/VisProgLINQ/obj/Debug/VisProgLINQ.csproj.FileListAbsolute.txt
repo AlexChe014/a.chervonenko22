@@ -49,3 +49,4 @@ C:\Users\alexc\OneDrive\Рабочий стол\Пары\a.chervonenko22\VisProg
 C:\Users\alexc\OneDrive\Рабочий стол\Пары\a.chervonenko22\VisProg\VisProgLINQ\bin\Debug\BouncyCastle.Crypto.xml
 C:\Users\alexc\OneDrive\Рабочий стол\Пары\a.chervonenko22\VisProg\VisProgLINQ\bin\Debug\ICSharpCode.SharpZipLib.pdb
 C:\Users\alexc\OneDrive\Рабочий стол\Пары\a.chervonenko22\VisProg\VisProgLINQ\bin\Debug\ICSharpCode.SharpZipLib.xml
+C:\Users\alexc\OneDrive\Рабочий стол\Пары\a.chervonenko22\VisProg\VisProgLINQ\obj\Debug\VisProgLINQ.FormEditProg.resources

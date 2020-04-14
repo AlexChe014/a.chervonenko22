@@ -129,6 +129,12 @@
     <Compile Include="FormAddStudent.Designer.cs">
       <DependentUpon>FormAddStudent.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormEditProg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormEditProg.Designer.cs">
+      <DependentUpon>FormEditProg.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormEditStudent.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -173,6 +179,9 @@
     <EmbeddedResource Include="FormAddStudent.resx">
       <DependentUpon>FormAddStudent.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormEditProg.resx">
+      <DependentUpon>FormEditProg.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormEditStudent.resx">
       <DependentUpon>FormEditStudent.cs</DependentUpon>
     </EmbeddedResource>
@@ -215,6 +224,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <None Include="Resources\template.xltx" />
+    <None Include="Resources\template2.xlsx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

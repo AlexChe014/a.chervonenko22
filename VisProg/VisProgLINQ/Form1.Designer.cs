@@ -41,9 +41,15 @@
             this.label1 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.demoDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.studentsBindingSource)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBox1
@@ -92,9 +98,9 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(432, 392);
+            this.button1.Location = new System.Drawing.Point(426, 385);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(101, 24);
+            this.button1.Size = new System.Drawing.Size(120, 36);
             this.button1.TabIndex = 4;
             this.button1.Text = "Поиск";
             this.button1.UseVisualStyleBackColor = true;
@@ -102,9 +108,9 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(539, 392);
+            this.button2.Location = new System.Drawing.Point(552, 385);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(142, 24);
+            this.button2.Size = new System.Drawing.Size(161, 36);
             this.button2.TabIndex = 5;
             this.button2.Text = "Редактировать";
             this.button2.UseVisualStyleBackColor = true;
@@ -112,9 +118,9 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(687, 392);
+            this.button3.Location = new System.Drawing.Point(719, 385);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(101, 24);
+            this.button3.Size = new System.Drawing.Size(120, 36);
             this.button3.TabIndex = 6;
             this.button3.Text = "Добавить";
             this.button3.UseVisualStyleBackColor = true;
@@ -131,9 +137,9 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(794, 392);
+            this.button4.Location = new System.Drawing.Point(845, 385);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(101, 24);
+            this.button4.Size = new System.Drawing.Size(120, 36);
             this.button4.TabIndex = 8;
             this.button4.Text = "Обновить";
             this.button4.UseVisualStyleBackColor = true;
@@ -149,11 +155,70 @@
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.radioButton2);
+            this.groupBox1.Controls.Add(this.radioButton1);
+            this.groupBox1.Location = new System.Drawing.Point(228, 427);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(282, 55);
+            this.groupBox1.TabIndex = 10;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Таблица";
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Location = new System.Drawing.Point(145, 28);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(122, 21);
+            this.radioButton2.TabIndex = 1;
+            this.radioButton2.Text = "Успеваемость";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Checked = true;
+            this.radioButton1.Location = new System.Drawing.Point(7, 28);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(93, 21);
+            this.radioButton1.TabIndex = 0;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "Студенты";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Items.AddRange(new object[] {
+            "Преподаватель",
+            "Фамилия студента",
+            "Дисциплина"});
+            this.comboBox2.Location = new System.Drawing.Point(228, 392);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(172, 24);
+            this.comboBox2.TabIndex = 12;
+            this.comboBox2.Visible = false;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(13, 392);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(187, 22);
+            this.textBox2.TabIndex = 11;
+            this.textBox2.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(977, 494);
+            this.Controls.Add(this.comboBox2);
+            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.label1);
@@ -169,6 +234,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.demoDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.studentsBindingSource)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -187,6 +254,11 @@
         public System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.TextBox textBox2;
     }
 }
 
