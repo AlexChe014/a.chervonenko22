@@ -46,6 +46,7 @@
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
+            this.button6 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.demoDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.studentsBindingSource)).BeginInit();
@@ -66,7 +67,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(980, 363);
+            this.dataGridView1.Size = new System.Drawing.Size(1113, 363);
             this.dataGridView1.TabIndex = 2;
             // 
             // demoDataSet
@@ -211,11 +212,22 @@
             this.textBox2.TabIndex = 11;
             this.textBox2.Visible = false;
             // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(971, 385);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(120, 36);
+            this.button6.TabIndex = 13;
+            this.button6.Text = "Удалить";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(977, 494);
+            this.ClientSize = new System.Drawing.Size(1112, 494);
+            this.Controls.Add(this.button6);
             this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.groupBox1);
@@ -259,6 +271,7 @@
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Button button6;
     }
 }
 

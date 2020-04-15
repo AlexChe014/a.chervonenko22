@@ -152,14 +152,13 @@ namespace VisProgLINQ
             else if (radioButton2.Checked)
             {
                 List<progress> query = (from prog in db.progress
-                                        join stud in db.students on prog.code_stud equals stud.code_stud
-                                        join sub in db.subjects on prog.code_subject equals sub.code_subject
+                                        
                                         select prog).ToList();
                 if (dataGridView1.SelectedCells.Count == 1)
                 {
                     if (Application.OpenForms.Count == 1)
                     {
-                        progress item = query.First(w => w.students.surname.ToString() == dataGridView1.SelectedCells[0].OwningRow.Cells[0].Value.ToString() && w.subjects.name_subject.ToString() == dataGridView1.SelectedCells[0].OwningRow.Cells[2].Value.ToString());
+                        progress item = query.First(w => w.code_stud.ToString() == dataGridView1.SelectedCells[0].OwningRow.Cells[0].Value.ToString() && w.code_subject.ToString() == dataGridView1.SelectedCells[0].OwningRow.Cells[7].Value.ToString());
 
                         FormEditProg edtPr = new FormEditProg(item);
                         edtPr.Owner = this;
@@ -245,7 +244,7 @@ namespace VisProgLINQ
                                  join sub in db.subjects on prog.code_subject equals sub.code_subject
                                  join l in db.lectors on prog.code_lector equals l.code_lector
                                  orderby prog.code_stud
-                                 select new { s.surname, s.name, sub.name_subject, prog.date_exam, prog.estimate, l.name_lector }).ToList();
+                                 select new { prog.code_stud, s.surname, s.name, sub.name_subject, prog.date_exam, prog.estimate, l.name_lector, prog.code_subject }).ToList();
                     var template = new MemoryStream(Properties.Resources.template2);
                     var workbook = new XSSFWorkbook(template);
                     var sheet1 = workbook.GetSheet("Лист1");
@@ -276,12 +275,13 @@ namespace VisProgLINQ
                          join sub in db.subjects on prog.code_subject equals sub.code_subject
                          join l in db.lectors on prog.code_lector equals l.code_lector
                          orderby prog.code_stud
-                         select new { s.surname, s.name, sub.name_subject, prog.date_exam, prog.estimate, l.name_lector }).ToList();
+                         select new { prog.code_stud, s.surname, s.name, sub.name_subject, prog.date_exam, prog.estimate, l.name_lector, prog.code_subject }).ToList();
             dataGridView1.DataSource = query;
             textBox1.Visible = false;
             comboBox1.Visible = false;
             textBox2.Visible = true;
             comboBox2.Visible = true;
+            dataGridView1.Columns[7].Visible = false;
         }
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
@@ -299,6 +299,37 @@ namespace VisProgLINQ
             comboBox1.Visible = true;
             textBox2.Visible = false;
             comboBox2.Visible = false;
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            DialogResult res = MessageBox.Show("Вы уверены?", "Внимание!", MessageBoxButtons.YesNo);
+            if (res == DialogResult.Yes)
+            {
+                if (radioButton1.Checked)
+                {
+                    List<students> query = (from stud in db.students
+                                            select stud).ToList();
+                    if (dataGridView1.SelectedCells.Count == 1)
+                    {
+                        students item = query.First(w => w.code_stud.ToString() == dataGridView1.SelectedCells[0].OwningRow.Cells[0].Value.ToString());
+                        db.students.Remove(item);
+                        db.SaveChanges();
+                    }
+                }
+                else if (radioButton2.Checked)
+                {
+                    List<progress> query = (from prog in db.progress
+                                            select prog).ToList();
+                    if (dataGridView1.SelectedCells.Count == 1)
+                    {
+
+                        progress item = query.First(w => w.code_stud.ToString() == dataGridView1.SelectedCells[0].OwningRow.Cells[0].Value.ToString() && w.code_subject.ToString() == dataGridView1.SelectedCells[0].OwningRow.Cells[7].Value.ToString());
+                        db.progress.Remove(item);
+                        db.SaveChanges();
+                    }
+                }
+            }
         }
     }
 }

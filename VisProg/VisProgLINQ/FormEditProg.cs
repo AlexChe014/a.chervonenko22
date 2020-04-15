@@ -36,6 +36,7 @@ namespace VisProgLINQ
             result.estimate = Convert.ToInt32(textBox1.Text);
             result.date_exam = new DateTime((int)numericUpDown3.Value, (int)numericUpDown2.Value, (int)numericUpDown1.Value);
             ((Form1)Owner).progSheet = ((Form1)Owner).db.progress.OrderBy(o => o.code_stud).ToList();
+            db.SaveChanges();
             ((Form1)Owner).db.SaveChanges();
             this.Close();
         }
