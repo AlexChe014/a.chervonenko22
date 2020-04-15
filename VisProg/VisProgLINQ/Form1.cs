@@ -108,13 +108,26 @@ namespace VisProgLINQ
 
         private void button3_Click(object sender, EventArgs e)
         {
-            if (Application.OpenForms.Count == 1)
+            if (radioButton1.Checked)
             {
-                FormAddStudent addSt = new FormAddStudent();
-                addSt.Owner = this;
-                addSt.Show();
+                if (Application.OpenForms.Count == 1)
+                {
+                    FormAddStudent addSt = new FormAddStudent();
+                    addSt.Owner = this;
+                    addSt.Show();
+                }
+                else Application.OpenForms[0].Focus();
             }
-            else Application.OpenForms[0].Focus();
+            else if (radioButton2.Checked)
+            {
+                if (Application.OpenForms.Count == 1)
+                {
+                    FormAddProg addPr = new FormAddProg();
+                    addPr.Owner = this;
+                    addPr.Show();
+                }
+                else Application.OpenForms[0].Focus();
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -160,11 +173,24 @@ namespace VisProgLINQ
 
         private void button4_Click(object sender, EventArgs e)
         {
-            var query = (from stud in db.students
-                         join g in db.groups on stud.code_group equals g.code_group
-                         orderby stud.code_stud
-                         select new { stud.code_stud, stud.surname, stud.name, g.name_group/*, stud.code_group */}).ToList();
-            dataGridView1.DataSource = query;
+            if (radioButton1.Checked)
+            {
+                var query = (from stud in db.students
+                             join g in db.groups on stud.code_group equals g.code_group
+                             orderby stud.code_stud
+                             select new { stud.code_stud, stud.surname, stud.name, g.name_group/*, stud.code_group */}).ToList();
+                dataGridView1.DataSource = query;
+            }
+            else if (radioButton2.Checked)
+            {
+                var query = (from prog in db.progress
+                             join s in db.students on prog.code_stud equals s.code_stud
+                             join sub in db.subjects on prog.code_subject equals sub.code_subject
+                             join l in db.lectors on prog.code_lector equals l.code_lector
+                             orderby prog.code_stud
+                             select new { s.surname, s.name, sub.name_subject, prog.date_exam, prog.estimate, l.name_lector }).ToList();
+                dataGridView1.DataSource = query;
+            }
         }
 
         private void button5_Click(object sender, EventArgs e)
