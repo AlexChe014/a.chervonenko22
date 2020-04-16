@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище contModel" Provider="Npgsql" ProviderManifestToken="11.5" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="s_in_group">
+          <Key>
+            <PropertyRef Name="id_group" />
+          </Key>
+          <Property Name="id_group" Type="int4" Nullable="false" />
+          <Property Name="kurs_num" Type="int4" Nullable="false" />
+          <Property Name="group_num" Type="int4" Nullable="false" />
+        </EntityType>
+        <EntityType Name="s_students">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int4" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="surname" Type="varchar" MaxLength="30" />
+          <Property Name="name" Type="varchar" MaxLength="30" />
+          <Property Name="middlename" Type="varchar" MaxLength="30" />
+          <Property Name="id_group" Type="int4" />
+        </EntityType>
+        <Association Name="s_students_id_group_fkey">
+          <End Role="s_in_group" Type="Self.s_in_group" Multiplicity="0..1" />
+          <End Role="s_students" Type="Self.s_students" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="s_in_group">
+              <PropertyRef Name="id_group" />
+            </Principal>
+            <Dependent Role="s_students">
+              <PropertyRef Name="id_group" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище contModelContainer">
+          <EntitySet Name="s_in_group" EntityType="Self.s_in_group" Schema="public" store:Type="Tables" />
+          <EntitySet Name="s_students" EntityType="Self.s_students" Schema="public" store:Type="Tables" />
+          <AssociationSet Name="s_students_id_group_fkey" Association="Self.s_students_id_group_fkey">
+            <End Role="s_in_group" EntitySet="s_in_group" />
+            <End Role="s_students" EntitySet="s_students" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="contModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="s_in_group">
+          <Key>
+            <PropertyRef Name="id_group" />
+          </Key>
+          <Property Name="id_group" Type="Int32" Nullable="false" />
+          <Property Name="kurs_num" Type="Int32" Nullable="false" />
+          <Property Name="group_num" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="s_students" Relationship="Self.s_students_id_group_fkey" FromRole="s_in_group" ToRole="s_students" />
+        </EntityType>
+        <EntityType Name="s_students">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="surname" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="middlename" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="id_group" Type="Int32" />
+          <NavigationProperty Name="s_in_group" Relationship="Self.s_students_id_group_fkey" FromRole="s_students" ToRole="s_in_group" />
+        </EntityType>
+        <Association Name="s_students_id_group_fkey">
+          <End Role="s_in_group" Type="Self.s_in_group" Multiplicity="0..1" />
+          <End Role="s_students" Type="Self.s_students" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="s_in_group">
+              <PropertyRef Name="id_group" />
+            </Principal>
+            <Dependent Role="s_students">
+              <PropertyRef Name="id_group" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="contEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="s_in_group" EntityType="Self.s_in_group" />
+          <EntitySet Name="s_students" EntityType="Self.s_students" />
+          <AssociationSet Name="s_students_id_group_fkey" Association="Self.s_students_id_group_fkey">
+            <End Role="s_in_group" EntitySet="s_in_group" />
+            <End Role="s_students" EntitySet="s_students" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище contModelContainer" CdmEntityContainer="contEntities">
+          <EntitySetMapping Name="s_in_group">
+            <EntityTypeMapping TypeName="contModel.s_in_group">
+              <MappingFragment StoreEntitySet="s_in_group">
+                <ScalarProperty Name="id_group" ColumnName="id_group" />
+                <ScalarProperty Name="kurs_num" ColumnName="kurs_num" />
+                <ScalarProperty Name="group_num" ColumnName="group_num" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="s_students">
+            <EntityTypeMapping TypeName="contModel.s_students">
+              <MappingFragment StoreEntitySet="s_students">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="surname" ColumnName="surname" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="middlename" ColumnName="middlename" />
+                <ScalarProperty Name="id_group" ColumnName="id_group" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

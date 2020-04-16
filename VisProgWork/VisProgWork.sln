@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.29806.167
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VisProgWork", "VisProgWork\VisProgWork.csproj", "{1F29EFEE-FBF9-446A-A42A-BC1392D1E2BD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VisProgWork2", "VisProgWork2\VisProgWork2.csproj", "{A51B955F-922C-4A26-9E4D-E1E88AB883C8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{1F29EFEE-FBF9-446A-A42A-BC1392D1E2BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1F29EFEE-FBF9-446A-A42A-BC1392D1E2BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1F29EFEE-FBF9-446A-A42A-BC1392D1E2BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A51B955F-922C-4A26-9E4D-E1E88AB883C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A51B955F-922C-4A26-9E4D-E1E88AB883C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A51B955F-922C-4A26-9E4D-E1E88AB883C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A51B955F-922C-4A26-9E4D-E1E88AB883C8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

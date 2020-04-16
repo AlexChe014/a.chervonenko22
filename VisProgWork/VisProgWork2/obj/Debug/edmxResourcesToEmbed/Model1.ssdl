@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище contModel" Provider="Npgsql" ProviderManifestToken="11.5" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="s_in_group">
+    <Key>
+      <PropertyRef Name="id_group" />
+    </Key>
+    <Property Name="id_group" Type="int4" Nullable="false" />
+    <Property Name="kurs_num" Type="int4" Nullable="false" />
+    <Property Name="group_num" Type="int4" Nullable="false" />
+  </EntityType>
+  <EntityType Name="s_students">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int4" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="surname" Type="varchar" MaxLength="30" />
+    <Property Name="name" Type="varchar" MaxLength="30" />
+    <Property Name="middlename" Type="varchar" MaxLength="30" />
+    <Property Name="id_group" Type="int4" />
+  </EntityType>
+  <Association Name="s_students_id_group_fkey">
+    <End Role="s_in_group" Type="Self.s_in_group" Multiplicity="0..1" />
+    <End Role="s_students" Type="Self.s_students" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="s_in_group">
+        <PropertyRef Name="id_group" />
+      </Principal>
+      <Dependent Role="s_students">
+        <PropertyRef Name="id_group" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище contModelContainer">
+    <EntitySet Name="s_in_group" EntityType="Self.s_in_group" Schema="public" store:Type="Tables" />
+    <EntitySet Name="s_students" EntityType="Self.s_students" Schema="public" store:Type="Tables" />
+    <AssociationSet Name="s_students_id_group_fkey" Association="Self.s_students_id_group_fkey">
+      <End Role="s_in_group" EntitySet="s_in_group" />
+      <End Role="s_students" EntitySet="s_students" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

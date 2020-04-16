@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище contModelContainer" CdmEntityContainer="contEntities">
+    <EntitySetMapping Name="s_in_group">
+      <EntityTypeMapping TypeName="contModel.s_in_group">
+        <MappingFragment StoreEntitySet="s_in_group">
+          <ScalarProperty Name="id_group" ColumnName="id_group" />
+          <ScalarProperty Name="kurs_num" ColumnName="kurs_num" />
+          <ScalarProperty Name="group_num" ColumnName="group_num" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="s_students">
+      <EntityTypeMapping TypeName="contModel.s_students">
+        <MappingFragment StoreEntitySet="s_students">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="surname" ColumnName="surname" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="middlename" ColumnName="middlename" />
+          <ScalarProperty Name="id_group" ColumnName="id_group" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
