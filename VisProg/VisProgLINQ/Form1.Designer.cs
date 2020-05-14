@@ -45,7 +45,6 @@
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
             this.button6 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.demoDataSet)).BeginInit();
@@ -204,14 +203,6 @@
             this.comboBox2.TabIndex = 12;
             this.comboBox2.Visible = false;
             // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(13, 392);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(187, 22);
-            this.textBox2.TabIndex = 11;
-            this.textBox2.Visible = false;
-            // 
             // button6
             // 
             this.button6.Location = new System.Drawing.Point(971, 385);
@@ -229,7 +220,6 @@
             this.ClientSize = new System.Drawing.Size(1112, 494);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.textBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
@@ -240,6 +230,7 @@
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.textBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "Form1";
             this.Text = "Список студентов";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -270,7 +261,6 @@
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Button button6;
     }
 }

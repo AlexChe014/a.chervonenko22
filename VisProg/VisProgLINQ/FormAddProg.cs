@@ -25,18 +25,25 @@ namespace VisProgLINQ
 
         private void button1_Click(object sender, EventArgs e)
         {
-            DateTime dt = new DateTime((int)numericUpDown3.Value, (int)numericUpDown2.Value, (int)numericUpDown1.Value);
-            progress prog = new progress
+            try
             {
-                code_stud = (int)numericUpDown1.Value,
-                code_subject = (int)numericUpDown3.Value,
-                code_lector = (int)numericUpDown2.Value,
-                estimate = (int)numericUpDown4.Value,
-                date_exam = dt
-            };
-            db.progress.Add(prog);
-            db.SaveChanges();
-            this.Close();
+                DateTime dt = new DateTime((int)numericUpDown3.Value, (int)numericUpDown2.Value, (int)numericUpDown1.Value);
+                progress prog = new progress
+                {
+                    code_stud = (int)numericUpDown1.Value,
+                    code_subject = (int)numericUpDown3.Value,
+                    code_lector = (int)numericUpDown2.Value,
+                    estimate = (int)numericUpDown4.Value,
+                    date_exam = dt
+                };
+                db.progress.Add(prog);
+                db.SaveChanges();
+                this.Close();
+            }
+            catch
+            {
+                MessageBox.Show("Ошибка внесения данных");
+            }
         }
     }
 }

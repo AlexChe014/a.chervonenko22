@@ -36,17 +36,24 @@ namespace VisProgLINQ
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var result = ((Form1)Owner).db.students.SingleOrDefault(w => w.code_stud == item.code_stud);
-            result.surname = textBox1.Text.ToString().Trim();
-            result.name = textBox2.Text.ToString().Trim();
-            var query = (from g in db.groups
-                         where g.name_group == comboBox1.SelectedItem.ToString()
-                         select g.code_group).ToList();
-            result.code_group = query[0];
+            try
+            {
+                var result = ((Form1)Owner).db.students.SingleOrDefault(w => w.code_stud == item.code_stud);
+                result.surname = textBox1.Text.ToString().Trim();
+                result.name = textBox2.Text.ToString().Trim();
+                var query = (from g in db.groups
+                             where g.name_group == comboBox1.SelectedItem.ToString()
+                             select g.code_group).ToList();
+                result.code_group = query[0];
 
-            ((Form1)Owner).studentSheet = ((Form1)Owner).db.students.OrderBy(o => o.code_stud).ToList();
-            ((Form1)Owner).db.SaveChanges();
-            this.Close();
+                ((Form1)Owner).studentSheet = ((Form1)Owner).db.students.OrderBy(o => o.code_stud).ToList();
+                ((Form1)Owner).db.SaveChanges();
+                this.Close();
+            }
+            catch
+            {
+                MessageBox.Show("Ошибка изменения данных");
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)

@@ -249,6 +249,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.numericUpDown1);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "FormAddProg";
             this.Text = "Добавление оценки";
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();

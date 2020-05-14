@@ -19,9 +19,16 @@ namespace VisProg9
 
         private void purchaseBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
-            this.Validate();
-            this.purchaseBindingSource.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.booksDataSet);
+            try
+            {
+                this.Validate();
+                this.purchaseBindingSource.EndEdit();
+                this.tableAdapterManager.UpdateAll(this.booksDataSet);
+            }
+            catch
+            {
+                MessageBox.Show("Ошибка изменения данных");
+            }
 
         }
 

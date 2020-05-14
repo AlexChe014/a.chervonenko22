@@ -19,10 +19,18 @@ namespace VisProg9
 
         private void Form7_Load(object sender, EventArgs e)
         {
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "booksDataSet.author". При необходимости она может быть перемещена или удалена.
-            this.authorTableAdapter.Fill(this.booksDataSet.author);
+            try
+            {
+                // TODO: данная строка кода позволяет загрузить данные в таблицу "booksDataSet.author". При необходимости она может быть перемещена или удалена.
+                this.authorTableAdapter.Fill(this.booksDataSet.author);
 
-            this.reportViewer1.RefreshReport();
+                this.reportViewer1.RefreshReport();
+            }
+            catch
+            {
+                MessageBox.Show("Ошибка данных");
+            }
+
         }
     }
 }

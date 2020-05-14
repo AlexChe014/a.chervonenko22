@@ -19,9 +19,16 @@ namespace VisProg9
 
         private void authorBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
-            this.Validate();
-            this.authorBindingSource.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.booksDataSet);
+            try
+            {
+                this.Validate();
+                this.authorBindingSource.EndEdit();
+                this.tableAdapterManager.UpdateAll(this.booksDataSet);
+            }
+            catch
+            {
+                MessageBox.Show("Ошибка изменения данных");
+            }
 
         }
 

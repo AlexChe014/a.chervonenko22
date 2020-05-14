@@ -24,10 +24,17 @@ namespace VisProg6
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string login = textBox1.Text;
-            string password = textBox2.Text;
-            User userEnter = new User(login, password);
-            userEnter.CheckUser();
+            try
+            {
+                string login = textBox1.Text;
+                string password = textBox2.Text;
+                User userEnter = new User(login, password);
+                userEnter.CheckUser();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

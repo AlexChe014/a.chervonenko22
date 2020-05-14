@@ -36,17 +36,20 @@ namespace VisProgLINQ
                           orderby prog.code_stud
                           select new { s.surname, s.name, sub.name_subject, prog.date_exam, prog.estimate, l.name_lector }).ToList();
             if (radioButton1.Checked)
+            {
                 dataGridView1.DataSource = query;
+                dataGridView1.Columns[0].HeaderText = "Номер студента";
+                dataGridView1.Columns[1].HeaderText = "Фамилия";
+                dataGridView1.Columns[2].HeaderText = "Имя";
+                dataGridView1.Columns[3].HeaderText = "Номер группы";
+            }
             else
                 dataGridView1.DataSource = query2;
             dataGridView1.ReadOnly = true;
             if (dataGridView1.RowCount == 0) label1.Visible = true;
             else label1.Visible = false;
 
-            dataGridView1.Columns[0].HeaderText = "Номер студента";
-            dataGridView1.Columns[1].HeaderText = "Фамилия";
-            dataGridView1.Columns[2].HeaderText = "Имя";
-            dataGridView1.Columns[3].HeaderText = "Номер группы";
+            
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -91,16 +94,16 @@ namespace VisProgLINQ
                              join l in db.lectors on prog.code_lector equals l.code_lector
                              orderby prog.code_stud
                              select new { s.surname, s.name, sub.name_subject, prog.date_exam, prog.estimate, l.name_lector }).ToList();
-                if (textBox2.Text != "")
+                if (textBox1.Text != "")
                 {
                     switch(comboBox2.SelectedIndex)
                     {
                         case 0:
-                            dataGridView1.DataSource = query.Where(p => p.name_lector.ToString() == textBox2.Text).ToList(); break;
+                            dataGridView1.DataSource = query.Where(p => p.name_lector.ToString() == textBox1.Text).ToList(); break;
                         case 1:
-                            dataGridView1.DataSource = query.Where(p => p.surname.ToString() == textBox2.Text).ToList(); break;
+                            dataGridView1.DataSource = query.Where(p => p.surname.ToString() == textBox1.Text).ToList(); break;
                         case 2:
-                            dataGridView1.DataSource = query.Where(p => p.name_subject.ToString() == textBox2.Text).ToList(); break;
+                            dataGridView1.DataSource = query.Where(p => p.name_subject.ToString() == textBox1.Text).ToList(); break;
                     }
                 }
             }
@@ -277,9 +280,14 @@ namespace VisProgLINQ
                          orderby prog.code_stud
                          select new { prog.code_stud, s.surname, s.name, sub.name_subject, prog.date_exam, prog.estimate, l.name_lector, prog.code_subject }).ToList();
             dataGridView1.DataSource = query;
-            textBox1.Visible = false;
+            dataGridView1.Columns[0].HeaderText = "Номер студента";
+            dataGridView1.Columns[1].HeaderText = "Фамилия";
+            dataGridView1.Columns[2].HeaderText = "Имя";
+            dataGridView1.Columns[3].HeaderText = "Дисциплина";
+            dataGridView1.Columns[4].HeaderText = "Дата";
+            dataGridView1.Columns[5].HeaderText = "Оценка";
+            dataGridView1.Columns[6].HeaderText = "Преподаватель";
             comboBox1.Visible = false;
-            textBox2.Visible = true;
             comboBox2.Visible = true;
             dataGridView1.Columns[7].Visible = false;
         }
@@ -295,9 +303,7 @@ namespace VisProgLINQ
             dataGridView1.Columns[1].HeaderText = "Фамилия";
             dataGridView1.Columns[2].HeaderText = "Имя";
             dataGridView1.Columns[3].HeaderText = "Номер группы";
-            textBox1.Visible = true;
             comboBox1.Visible = true;
-            textBox2.Visible = false;
             comboBox2.Visible = false;
         }
 
@@ -308,25 +314,39 @@ namespace VisProgLINQ
             {
                 if (radioButton1.Checked)
                 {
-                    List<students> query = (from stud in db.students
-                                            select stud).ToList();
-                    if (dataGridView1.SelectedCells.Count == 1)
+                    try
                     {
-                        students item = query.First(w => w.code_stud.ToString() == dataGridView1.SelectedCells[0].OwningRow.Cells[0].Value.ToString());
-                        db.students.Remove(item);
-                        db.SaveChanges();
+                        List<students> query = (from stud in db.students
+                                                select stud).ToList();
+                        if (dataGridView1.SelectedCells.Count == 1)
+                        {
+                            students item = query.First(w => w.code_stud.ToString() == dataGridView1.SelectedCells[0].OwningRow.Cells[0].Value.ToString());
+                            db.students.Remove(item);
+                            db.SaveChanges();
+                        }
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Ошибка изменения данных");
                     }
                 }
                 else if (radioButton2.Checked)
                 {
-                    List<progress> query = (from prog in db.progress
-                                            select prog).ToList();
-                    if (dataGridView1.SelectedCells.Count == 1)
+                    try
                     {
+                        List<progress> query = (from prog in db.progress
+                                                select prog).ToList();
+                        if (dataGridView1.SelectedCells.Count == 1)
+                        {
 
-                        progress item = query.First(w => w.code_stud.ToString() == dataGridView1.SelectedCells[0].OwningRow.Cells[0].Value.ToString() && w.code_subject.ToString() == dataGridView1.SelectedCells[0].OwningRow.Cells[7].Value.ToString());
-                        db.progress.Remove(item);
-                        db.SaveChanges();
+                            progress item = query.First(w => w.code_stud.ToString() == dataGridView1.SelectedCells[0].OwningRow.Cells[0].Value.ToString() && w.code_subject.ToString() == dataGridView1.SelectedCells[0].OwningRow.Cells[7].Value.ToString());
+                            db.progress.Remove(item);
+                            db.SaveChanges();
+                        }
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Ошибка изменения данных");
                     }
                 }
             }

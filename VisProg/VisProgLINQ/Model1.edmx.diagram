@@ -6,9 +6,9 @@
     <edmx:Diagrams>
       <Diagram DiagramId="1443841466364b5cacfd57db9d144dae" Name="Diagram1">
         <EntityTypeShape EntityType="demoModel.groups" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="demoModel.lectors" Width="1.5" PointX="3" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="demoModel.lectors" Width="1.5" PointX="8.125" PointY="1.875" IsExpanded="true" />
         <EntityTypeShape EntityType="demoModel.students" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="demoModel.subjects" Width="1.5" PointX="3" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="demoModel.subjects" Width="1.5" PointX="5" PointY="4.5" IsExpanded="true" />
         <EntityTypeShape EntityType="demoModel.progress" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
         <AssociationConnector Association="demoModel.students_code_group_fkey" ManuallyRouted="false" />
         <AssociationConnector Association="demoModel.progress_code_lector_fkey" ManuallyRouted="false" />
