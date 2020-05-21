@@ -182,6 +182,7 @@ namespace VisProgLINQ
                              orderby stud.code_stud
                              select new { stud.code_stud, stud.surname, stud.name, g.name_group/*, stud.code_group */}).ToList();
                 dataGridView1.DataSource = query;
+                label1.Visible = false;
             }
             else if (radioButton2.Checked)
             {
@@ -192,6 +193,7 @@ namespace VisProgLINQ
                              orderby prog.code_stud
                              select new { s.surname, s.name, sub.name_subject, prog.date_exam, prog.estimate, l.name_lector }).ToList();
                 dataGridView1.DataSource = query;
+                label1.Visible = false;
             }
         }
 
@@ -350,6 +352,22 @@ namespace VisProgLINQ
                     }
                 }
             }
+        }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char number = e.KeyChar;
+                if (comboBox1.SelectedIndex == 0 || comboBox1.SelectedIndex == 3)
+                if (!Char.IsDigit(number) && number != 8) // цифры и клавиша BackSpace
+                {
+                    e.Handled = true;
+                }
+
         }
     }
 }

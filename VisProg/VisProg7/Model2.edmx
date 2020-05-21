@@ -1,0 +1,394 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище driveCourseModel" Provider="Npgsql" ProviderManifestToken="11.5" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="auto">
+          <Key>
+            <PropertyRef Name="id_a" />
+          </Key>
+          <Property Name="id_a" Type="int4" Nullable="false" />
+          <Property Name="model" Type="text" Nullable="false" />
+          <Property Name="num" Type="text" Nullable="false" />
+          <Property Name="year_a" Type="int4" />
+        </EntityType>
+        <EntityType Name="list">
+          <Key>
+            <PropertyRef Name="id_g" />
+            <PropertyRef Name="id_s" />
+          </Key>
+          <Property Name="id_g" Type="int4" Nullable="false" />
+          <Property Name="id_s" Type="int4" Nullable="false" />
+        </EntityType>
+        <EntityType Name="objects">
+          <Key>
+            <PropertyRef Name="id_o" />
+          </Key>
+          <Property Name="id_o" Type="int4" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="type_o" Type="bpchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="payment">
+          <Key>
+            <PropertyRef Name="id_p" />
+          </Key>
+          <Property Name="id_p" Type="int4" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_s" Type="int4" />
+          <Property Name="summa" Type="float4" Nullable="false" />
+          <Property Name="pay_day" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="s_group">
+          <Key>
+            <PropertyRef Name="id_g" />
+          </Key>
+          <Property Name="id_g" Type="int4" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="create_d" Type="date" />
+          <Property Name="teach_id" Type="int4" Nullable="false" />
+        </EntityType>
+        <EntityType Name="users">
+          <Key>
+            <PropertyRef Name="id_u" />
+          </Key>
+          <Property Name="id_u" Type="int4" Nullable="false" />
+          <Property Name="surname" Type="text" Nullable="false" />
+          <Property Name="name" Type="text" Nullable="false" />
+          <Property Name="patron" Type="text" />
+          <Property Name="birthday" Type="date" />
+          <Property Name="login" Type="text" Nullable="false" />
+          <Property Name="pass" Type="text" Nullable="false" />
+          <Property Name="role" Type="bpchar" MaxLength="1" />
+        </EntityType>
+        <Association Name="auto_id_a_fkey">
+          <End Role="objects" Type="Self.objects" Multiplicity="1" />
+          <End Role="auto" Type="Self.auto" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="objects">
+              <PropertyRef Name="id_o" />
+            </Principal>
+            <Dependent Role="auto">
+              <PropertyRef Name="id_a" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="list_id_g_fkey">
+          <End Role="s_group" Type="Self.s_group" Multiplicity="1" />
+          <End Role="list" Type="Self.list" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="s_group">
+              <PropertyRef Name="id_g" />
+            </Principal>
+            <Dependent Role="list">
+              <PropertyRef Name="id_g" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="list_id_s_fkey">
+          <End Role="users" Type="Self.users" Multiplicity="1" />
+          <End Role="list" Type="Self.list" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="id_u" />
+            </Principal>
+            <Dependent Role="list">
+              <PropertyRef Name="id_s" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="payment_id_s_fkey">
+          <End Role="users" Type="Self.users" Multiplicity="0..1" />
+          <End Role="payment" Type="Self.payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="id_u" />
+            </Principal>
+            <Dependent Role="payment">
+              <PropertyRef Name="id_s" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="s_group_teach_id_fkey">
+          <End Role="users" Type="Self.users" Multiplicity="1" />
+          <End Role="s_group" Type="Self.s_group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="id_u" />
+            </Principal>
+            <Dependent Role="s_group">
+              <PropertyRef Name="teach_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="users_id_u_fkey">
+          <End Role="objects" Type="Self.objects" Multiplicity="1" />
+          <End Role="users" Type="Self.users" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="objects">
+              <PropertyRef Name="id_o" />
+            </Principal>
+            <Dependent Role="users">
+              <PropertyRef Name="id_u" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище driveCourseModelContainer">
+          <EntitySet Name="auto" EntityType="Self.auto" Schema="public" store:Type="Tables" />
+          <EntitySet Name="list" EntityType="Self.list" Schema="public" store:Type="Tables" />
+          <EntitySet Name="objects" EntityType="Self.objects" Schema="public" store:Type="Tables" />
+          <EntitySet Name="payment" EntityType="Self.payment" Schema="public" store:Type="Tables" />
+          <EntitySet Name="s_group" EntityType="Self.s_group" Schema="public" store:Type="Tables" />
+          <EntitySet Name="users" EntityType="Self.users" Schema="public" store:Type="Tables" />
+          <AssociationSet Name="auto_id_a_fkey" Association="Self.auto_id_a_fkey">
+            <End Role="objects" EntitySet="objects" />
+            <End Role="auto" EntitySet="auto" />
+          </AssociationSet>
+          <AssociationSet Name="list_id_g_fkey" Association="Self.list_id_g_fkey">
+            <End Role="s_group" EntitySet="s_group" />
+            <End Role="list" EntitySet="list" />
+          </AssociationSet>
+          <AssociationSet Name="list_id_s_fkey" Association="Self.list_id_s_fkey">
+            <End Role="users" EntitySet="users" />
+            <End Role="list" EntitySet="list" />
+          </AssociationSet>
+          <AssociationSet Name="payment_id_s_fkey" Association="Self.payment_id_s_fkey">
+            <End Role="users" EntitySet="users" />
+            <End Role="payment" EntitySet="payment" />
+          </AssociationSet>
+          <AssociationSet Name="s_group_teach_id_fkey" Association="Self.s_group_teach_id_fkey">
+            <End Role="users" EntitySet="users" />
+            <End Role="s_group" EntitySet="s_group" />
+          </AssociationSet>
+          <AssociationSet Name="users_id_u_fkey" Association="Self.users_id_u_fkey">
+            <End Role="objects" EntitySet="objects" />
+            <End Role="users" EntitySet="users" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="driveCourseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="auto">
+          <Key>
+            <PropertyRef Name="id_a" />
+          </Key>
+          <Property Name="id_a" Type="Int32" Nullable="false" />
+          <Property Name="model" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="num" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="year_a" Type="Int32" />
+          <NavigationProperty Name="objects" Relationship="Self.auto_id_a_fkey" FromRole="auto" ToRole="objects" />
+        </EntityType>
+        <EntityType Name="objects">
+          <Key>
+            <PropertyRef Name="id_o" />
+          </Key>
+          <Property Name="id_o" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="type_o" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="auto" Relationship="Self.auto_id_a_fkey" FromRole="objects" ToRole="auto" />
+          <NavigationProperty Name="users" Relationship="Self.users_id_u_fkey" FromRole="objects" ToRole="users" />
+        </EntityType>
+        <EntityType Name="payment">
+          <Key>
+            <PropertyRef Name="id_p" />
+          </Key>
+          <Property Name="id_p" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_s" Type="Int32" />
+          <Property Name="summa" Type="Single" Nullable="false" />
+          <Property Name="pay_day" Type="DateTime" Precision="0" Nullable="false" />
+          <NavigationProperty Name="users" Relationship="Self.payment_id_s_fkey" FromRole="payment" ToRole="users" />
+        </EntityType>
+        <EntityType Name="s_group">
+          <Key>
+            <PropertyRef Name="id_g" />
+          </Key>
+          <Property Name="id_g" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="create_d" Type="DateTime" Precision="0" />
+          <Property Name="teach_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="users" Relationship="Self.s_group_teach_id_fkey" FromRole="s_group" ToRole="users" />
+          <NavigationProperty Name="users1" Relationship="Self.list" FromRole="s_group" ToRole="users" />
+        </EntityType>
+        <EntityType Name="users">
+          <Key>
+            <PropertyRef Name="id_u" />
+          </Key>
+          <Property Name="id_u" Type="Int32" Nullable="false" />
+          <Property Name="surname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="patron" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="birthday" Type="DateTime" Precision="0" />
+          <Property Name="login" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="pass" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="role" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="objects" Relationship="Self.users_id_u_fkey" FromRole="users" ToRole="objects" />
+          <NavigationProperty Name="payment" Relationship="Self.payment_id_s_fkey" FromRole="users" ToRole="payment" />
+          <NavigationProperty Name="s_group" Relationship="Self.s_group_teach_id_fkey" FromRole="users" ToRole="s_group" />
+          <NavigationProperty Name="s_group1" Relationship="Self.list" FromRole="users" ToRole="s_group" />
+        </EntityType>
+        <Association Name="auto_id_a_fkey">
+          <End Role="objects" Type="Self.objects" Multiplicity="1" />
+          <End Role="auto" Type="Self.auto" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="objects">
+              <PropertyRef Name="id_o" />
+            </Principal>
+            <Dependent Role="auto">
+              <PropertyRef Name="id_a" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="users_id_u_fkey">
+          <End Role="objects" Type="Self.objects" Multiplicity="1" />
+          <End Role="users" Type="Self.users" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="objects">
+              <PropertyRef Name="id_o" />
+            </Principal>
+            <Dependent Role="users">
+              <PropertyRef Name="id_u" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="payment_id_s_fkey">
+          <End Role="users" Type="Self.users" Multiplicity="0..1" />
+          <End Role="payment" Type="Self.payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="id_u" />
+            </Principal>
+            <Dependent Role="payment">
+              <PropertyRef Name="id_s" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="s_group_teach_id_fkey">
+          <End Role="users" Type="Self.users" Multiplicity="1" />
+          <End Role="s_group" Type="Self.s_group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="id_u" />
+            </Principal>
+            <Dependent Role="s_group">
+              <PropertyRef Name="teach_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="list">
+          <End Role="s_group" Type="Self.s_group" Multiplicity="*" />
+          <End Role="users" Type="Self.users" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="driveCourseEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="auto" EntityType="Self.auto" />
+          <EntitySet Name="objects" EntityType="Self.objects" />
+          <EntitySet Name="payment" EntityType="Self.payment" />
+          <EntitySet Name="s_group" EntityType="Self.s_group" />
+          <EntitySet Name="users" EntityType="Self.users" />
+          <AssociationSet Name="auto_id_a_fkey" Association="Self.auto_id_a_fkey">
+            <End Role="objects" EntitySet="objects" />
+            <End Role="auto" EntitySet="auto" />
+          </AssociationSet>
+          <AssociationSet Name="users_id_u_fkey" Association="Self.users_id_u_fkey">
+            <End Role="objects" EntitySet="objects" />
+            <End Role="users" EntitySet="users" />
+          </AssociationSet>
+          <AssociationSet Name="payment_id_s_fkey" Association="Self.payment_id_s_fkey">
+            <End Role="users" EntitySet="users" />
+            <End Role="payment" EntitySet="payment" />
+          </AssociationSet>
+          <AssociationSet Name="s_group_teach_id_fkey" Association="Self.s_group_teach_id_fkey">
+            <End Role="users" EntitySet="users" />
+            <End Role="s_group" EntitySet="s_group" />
+          </AssociationSet>
+          <AssociationSet Name="list" Association="Self.list">
+            <End Role="s_group" EntitySet="s_group" />
+            <End Role="users" EntitySet="users" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище driveCourseModelContainer" CdmEntityContainer="driveCourseEntities">
+          <EntitySetMapping Name="auto">
+            <EntityTypeMapping TypeName="driveCourseModel.auto">
+              <MappingFragment StoreEntitySet="auto">
+                <ScalarProperty Name="id_a" ColumnName="id_a" />
+                <ScalarProperty Name="model" ColumnName="model" />
+                <ScalarProperty Name="num" ColumnName="num" />
+                <ScalarProperty Name="year_a" ColumnName="year_a" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="objects">
+            <EntityTypeMapping TypeName="driveCourseModel.objects">
+              <MappingFragment StoreEntitySet="objects">
+                <ScalarProperty Name="id_o" ColumnName="id_o" />
+                <ScalarProperty Name="type_o" ColumnName="type_o" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="payment">
+            <EntityTypeMapping TypeName="driveCourseModel.payment">
+              <MappingFragment StoreEntitySet="payment">
+                <ScalarProperty Name="id_p" ColumnName="id_p" />
+                <ScalarProperty Name="id_s" ColumnName="id_s" />
+                <ScalarProperty Name="summa" ColumnName="summa" />
+                <ScalarProperty Name="pay_day" ColumnName="pay_day" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="s_group">
+            <EntityTypeMapping TypeName="driveCourseModel.s_group">
+              <MappingFragment StoreEntitySet="s_group">
+                <ScalarProperty Name="id_g" ColumnName="id_g" />
+                <ScalarProperty Name="create_d" ColumnName="create_d" />
+                <ScalarProperty Name="teach_id" ColumnName="teach_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="users">
+            <EntityTypeMapping TypeName="driveCourseModel.users">
+              <MappingFragment StoreEntitySet="users">
+                <ScalarProperty Name="id_u" ColumnName="id_u" />
+                <ScalarProperty Name="surname" ColumnName="surname" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="patron" ColumnName="patron" />
+                <ScalarProperty Name="birthday" ColumnName="birthday" />
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="pass" ColumnName="pass" />
+                <ScalarProperty Name="role" ColumnName="role" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="list" TypeName="driveCourseModel.list" StoreEntitySet="list">
+            <EndProperty Name="s_group">
+              <ScalarProperty Name="id_g" ColumnName="id_g" />
+            </EndProperty>
+            <EndProperty Name="users">
+              <ScalarProperty Name="id_u" ColumnName="id_s" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

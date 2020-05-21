@@ -58,6 +58,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(187, 22);
             this.textBox1.TabIndex = 1;
+            this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
             // 
             // dataGridView1
             // 
@@ -202,6 +203,7 @@
             this.comboBox2.Size = new System.Drawing.Size(172, 24);
             this.comboBox2.TabIndex = 12;
             this.comboBox2.Visible = false;
+            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
             // button6
             // 
