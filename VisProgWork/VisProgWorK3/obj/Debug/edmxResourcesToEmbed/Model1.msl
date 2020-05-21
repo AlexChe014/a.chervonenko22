@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище controshaModelContainer" CdmEntityContainer="controshaEntities">
+    <EntitySetMapping Name="adresats">
+      <EntityTypeMapping TypeName="controshaModel.adresats">
+        <MappingFragment StoreEntitySet="adresats">
+          <ScalarProperty Name="id_a" ColumnName="id_a" />
+          <ScalarProperty Name="snp" ColumnName="snp" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="adr" ColumnName="adr" />
+          <ScalarProperty Name="message_t" ColumnName="message_t" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="clients">
+      <EntityTypeMapping TypeName="controshaModel.clients">
+        <MappingFragment StoreEntitySet="clients">
+          <ScalarProperty Name="id_c" ColumnName="id_c" />
+          <ScalarProperty Name="snp" ColumnName="snp" />
+          <ScalarProperty Name="email" ColumnName="email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

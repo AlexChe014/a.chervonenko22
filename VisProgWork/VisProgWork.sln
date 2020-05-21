@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VisProgWork", "VisProgWork\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VisProgWork2", "VisProgWork2\VisProgWork2.csproj", "{A51B955F-922C-4A26-9E4D-E1E88AB883C8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VisProgWorK3", "VisProgWorK3\VisProgWorK3.csproj", "{A7A840D2-51D9-42A2-8BC9-25B1FF855D67}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{A51B955F-922C-4A26-9E4D-E1E88AB883C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A51B955F-922C-4A26-9E4D-E1E88AB883C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A51B955F-922C-4A26-9E4D-E1E88AB883C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7A840D2-51D9-42A2-8BC9-25B1FF855D67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7A840D2-51D9-42A2-8BC9-25B1FF855D67}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7A840D2-51D9-42A2-8BC9-25B1FF855D67}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7A840D2-51D9-42A2-8BC9-25B1FF855D67}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

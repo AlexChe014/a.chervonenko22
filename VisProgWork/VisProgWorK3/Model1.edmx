@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище controshaModel" Provider="Npgsql" ProviderManifestToken="11.5" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="adresats">
+          <Key>
+            <PropertyRef Name="id_a" />
+          </Key>
+          <Property Name="id_a" Type="int4" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="snp" Type="text" Nullable="false" />
+          <Property Name="email" Type="text" Nullable="false" />
+          <Property Name="adr" Type="int4" Nullable="false" />
+          <Property Name="message_t" Type="text" />
+        </EntityType>
+        <EntityType Name="clients">
+          <Key>
+            <PropertyRef Name="id_c" />
+          </Key>
+          <Property Name="id_c" Type="int4" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="snp" Type="text" Nullable="false" />
+          <Property Name="email" Type="text" Nullable="false" />
+        </EntityType>
+        <Association Name="adresats_adr_fkey">
+          <End Role="clients" Type="Self.clients" Multiplicity="1" />
+          <End Role="adresats" Type="Self.adresats" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="clients">
+              <PropertyRef Name="id_c" />
+            </Principal>
+            <Dependent Role="adresats">
+              <PropertyRef Name="adr" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище controshaModelContainer">
+          <EntitySet Name="adresats" EntityType="Self.adresats" Schema="public" store:Type="Tables" />
+          <EntitySet Name="clients" EntityType="Self.clients" Schema="public" store:Type="Tables" />
+          <AssociationSet Name="adresats_adr_fkey" Association="Self.adresats_adr_fkey">
+            <End Role="clients" EntitySet="clients" />
+            <End Role="adresats" EntitySet="adresats" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="controshaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="adresats">
+          <Key>
+            <PropertyRef Name="id_a" />
+          </Key>
+          <Property Name="id_a" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="snp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="adr" Type="Int32" Nullable="false" />
+          <Property Name="message_t" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="clients" Relationship="Self.adresats_adr_fkey" FromRole="adresats" ToRole="clients" />
+        </EntityType>
+        <EntityType Name="clients">
+          <Key>
+            <PropertyRef Name="id_c" />
+          </Key>
+          <Property Name="id_c" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="snp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="adresats" Relationship="Self.adresats_adr_fkey" FromRole="clients" ToRole="adresats" />
+        </EntityType>
+        <Association Name="adresats_adr_fkey">
+          <End Role="clients" Type="Self.clients" Multiplicity="1" />
+          <End Role="adresats" Type="Self.adresats" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="clients">
+              <PropertyRef Name="id_c" />
+            </Principal>
+            <Dependent Role="adresats">
+              <PropertyRef Name="adr" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="controshaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="adresats" EntityType="Self.adresats" />
+          <EntitySet Name="clients" EntityType="Self.clients" />
+          <AssociationSet Name="adresats_adr_fkey" Association="Self.adresats_adr_fkey">
+            <End Role="clients" EntitySet="clients" />
+            <End Role="adresats" EntitySet="adresats" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище controshaModelContainer" CdmEntityContainer="controshaEntities">
+          <EntitySetMapping Name="adresats">
+            <EntityTypeMapping TypeName="controshaModel.adresats">
+              <MappingFragment StoreEntitySet="adresats">
+                <ScalarProperty Name="id_a" ColumnName="id_a" />
+                <ScalarProperty Name="snp" ColumnName="snp" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="adr" ColumnName="adr" />
+                <ScalarProperty Name="message_t" ColumnName="message_t" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="clients">
+            <EntityTypeMapping TypeName="controshaModel.clients">
+              <MappingFragment StoreEntitySet="clients">
+                <ScalarProperty Name="id_c" ColumnName="id_c" />
+                <ScalarProperty Name="snp" ColumnName="snp" />
+                <ScalarProperty Name="email" ColumnName="email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

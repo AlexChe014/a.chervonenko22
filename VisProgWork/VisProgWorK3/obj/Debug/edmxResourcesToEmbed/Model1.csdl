@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="controshaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="adresats">
+    <Key>
+      <PropertyRef Name="id_a" />
+    </Key>
+    <Property Name="id_a" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="snp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="adr" Type="Int32" Nullable="false" />
+    <Property Name="message_t" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="clients" Relationship="Self.adresats_adr_fkey" FromRole="adresats" ToRole="clients" />
+  </EntityType>
+  <EntityType Name="clients">
+    <Key>
+      <PropertyRef Name="id_c" />
+    </Key>
+    <Property Name="id_c" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="snp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="adresats" Relationship="Self.adresats_adr_fkey" FromRole="clients" ToRole="adresats" />
+  </EntityType>
+  <Association Name="adresats_adr_fkey">
+    <End Role="clients" Type="Self.clients" Multiplicity="1" />
+    <End Role="adresats" Type="Self.adresats" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="clients">
+        <PropertyRef Name="id_c" />
+      </Principal>
+      <Dependent Role="adresats">
+        <PropertyRef Name="adr" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="controshaEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="adresats" EntityType="Self.adresats" />
+    <EntitySet Name="clients" EntityType="Self.clients" />
+    <AssociationSet Name="adresats_adr_fkey" Association="Self.adresats_adr_fkey">
+      <End Role="clients" EntitySet="clients" />
+      <End Role="adresats" EntitySet="adresats" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

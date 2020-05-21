@@ -1,0 +1,8 @@
+create table adresats (id_a serial Primary Key,
+					  snp text not null,
+					  email text not null,
+					  adr int not null);
+create table clients (id_c serial Primary key,
+					  snp text not null,
+					  email text not null);
+alter table adresats add foreign key (adr) references clients(id_c);
